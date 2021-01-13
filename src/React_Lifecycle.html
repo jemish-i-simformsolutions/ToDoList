@@ -1,0 +1,100 @@
+<html>
+
+   <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>  <!-- enable react--> 
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> <!--enable react-dom-->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script><!--enable babel ==>is a javascript compiler and convert ECMAscript to compatible javascript-->
+    
+    <body>
+        <div id="d1"></div>
+        <div id="d2"></div>
+        <div id="d3"></div>
+        <div id="d4"></div>
+        <script type="text/babel" >
+        class Hiii extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={      //state is default object of react component and store variables and directly initialized and managed by component 
+            name:'Jemish',
+            education:'UG',
+            flag:true
+        }
+    }
+    changeName=()=>{
+        this.setState({name:'Italiya'});    //this.setState() method is basically used to change the value of state
+    }
+    show=()=>{
+            this.setState({flag:false})
+        
+
+    }
+    componentDidMount(){  //this function is used after the component rendered or for the component which is already rendered
+        setTimeout(()=>{
+            this.setState({name:'rahul'})
+        },2000)
+    }
+    shouldComponentUpdate(){ //prevent component from updating if return is false
+       return true;
+    }
+    getSnapshotBeforeUpdate(prevProps,prevState){
+        document.getElementById('d3').innerHTML="before update value is "+prevState.name+" ";
+    }
+    componentDidUpdate(){       //this function is called after component has updated 
+        document.getElementById('d4').innerHTML="component is updated";
+    }
+   
+
+    render(){    //render method give output as HTML to DOM
+        let data
+        if(this.state.flag){
+            data=<Hello/>
+        }
+        
+        return (
+            <div>
+            <h1> Hello let's learn Basic, {this.state.name}</h1>
+            <button onClick={this.changeName}>Change Here</button>
+            <button onClick={this.show}>check here</button><br/>
+            {data}
+            </div>
+        );
+    };
+    
+}
+class Hello extends React.Component{
+    constructor(props){
+        super(props);
+        {
+       this.state={
+           name:'jemish',
+           color:'green'
+         }
+        }
+    }
+    getDerivedStateFromProps(props,state){ //used when we want to change state according to props
+        return{color:this.props.color}
+        
+    }
+    componentWillUnmount(){
+        alert('component is unmounted')
+
+    }
+
+    render(){
+        return(
+            <div>
+                Hello my favourite color is {this.props.color} , and jemish's favourite color is {this.state.color}
+                {" "}and {this.props.children}{/*here props.children means whatever we going to add between <Hello></Hello> */ }
+            </div>
+        )
+    }
+}
+//const Elemnt1=()=>{
+  //  return React.createElement('div',{},"Hello let's try different things");
+//};
+
+            
+        ReactDOM.render(<Hiii/>,document.getElementById("d1"));
+        ReactDOM.render(<Hello color="yellow" >what is yours?</Hello>,document.getElementById('d2'));//props are varibles but initialized by the parent component
+        </script>
+    </body>
+</html>
