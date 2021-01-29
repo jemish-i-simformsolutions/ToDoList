@@ -17,11 +17,12 @@ class App extends React.Component{
         
         return(
             <>
+            <div>
             <div id="heading">To Do List</div>
             <div>
             <Task/>
             </div>
-         
+            </div>
             </>
 
         );

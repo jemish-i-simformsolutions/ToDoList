@@ -20,3 +20,18 @@
 #list{
     background-color: aqua;
 }
+#subcombo1{
+    display: inline-block;
+}
+#tarea{
+    margin-top: 10px;
+    height: 50px;
+    width: 300px;
+}
+#addbtn{
+    height: 50px;
+    width: auto;
+}
+#btn1{
+    margin-left: 10px;
+}

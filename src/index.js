@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import MainComponent from './MainComponent';
 
 
 
-ReactDOM.render(<App month='January'/>,document.getElementById('div1'));
+ReactDOM.render(<MainComponent color="white"/>,document.getElementById('div1'));
