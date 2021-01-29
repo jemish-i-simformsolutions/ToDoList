@@ -9,10 +9,12 @@ function Task(props) {
     function display_list(val){
         return(
             <>
-            <div id='list'>
-            {val}
-            </div>
             <br/>
+            <div id='list'>
+            {val} <button id="delete" onClick={()=>{
+            setArr(arr.filter((item)=>item!=val));
+            }}><DeleteIcon/></button>
+            </div>
             </>
         );
 
@@ -21,7 +23,21 @@ function Task(props) {
     function getTask(){
         
         setArr(x=>[(document.getElementById("textarea").value),...x]);  
-       
+    }
+    function btn_name(){
+        let btn_nm="Show list here";
+        if(listComponent){
+            btn_nm="hide list"; 
+        }
+        else{
+            
+            btn_nm="show list here";
+        }
+        return (
+            <>
+            hello
+            </>
+        );
         
     }
    
@@ -31,10 +47,11 @@ function Task(props) {
         <div id='task'>
         <textarea id="textarea"></textarea>
          <button id="button1" onClick={getTask}>Add</button>
-        
         </div>
         <div id="task_list">
-        <button onClick={()=>setListComponent(arr.map(display_list))}>Show your work list here</button><br/>
+        <button onClick={()=>setListComponent(arr.map(display_list))}>Show list here</button>
+        
+        <br/>
          {listComponent}
         </div>
         
