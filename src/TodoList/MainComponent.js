@@ -34,21 +34,22 @@ class MainComponent extends Component{
             }} ><AddCircleIcon/></button>
         </div>
        </div>
+       <div id="tasklist">
        {console.log(this.state.arr)}
        {this.state.arr.map((val)=>{
                    return(
                     <>
-                    <div>
-                    {val}<button onClick={()=>this.setState({arr:this.state.arr.filter((item)=>item!=val)})}><DeleteIcon/></button>
+                    <div id="task">
+                    {val}<button id="delbtn" onClick={()=>this.setState({arr:this.state.arr.filter((item)=>item!=val)})}><DeleteIcon/></button>
                     </div>
+                    <br/>
                     </>
                    );
                })
         }
+        </div>
        </div>
-       <div>
-       
-       </div>
+      
        </>
         );
     }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import DeleteIcon from '@material-ui/icons/Delete';
-import "./Pro.css";
+
+import "../Pro.css";
 
 function Task(props) {
     const [arr,setArr]=useState([]);

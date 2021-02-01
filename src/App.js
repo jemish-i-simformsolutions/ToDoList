@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./Pro.css";
-import Task from "./Task";
+import Task from "./TodoList/Task";
 
 
 

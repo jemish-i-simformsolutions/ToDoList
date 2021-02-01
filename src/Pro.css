@@ -5,11 +5,7 @@
     text-align: center;
 
 }
-#task{
-    display: inline;
-    height: 100px;
 
-}
 #textarea{
     width: 70%;
     height: 100px;
@@ -31,7 +27,25 @@
 #addbtn{
     height: 50px;
     width: auto;
+
 }
 #btn1{
+    margin-left: 10px;
+}
+#task{
+    width: 300px;
+    min-height: 50px ;
+    background-color: darkgrey;
+    font-weight: bolder;
+    color: cornsilk;
+    margin-left:0px ;
+    
+}
+#delbtn{
+    margin-left: 305px;
+    
+}
+#hoc{
+    display: inline-block;
     margin-left: 10px;
 }
