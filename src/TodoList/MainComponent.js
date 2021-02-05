@@ -1,18 +1,32 @@
 import React, {Component, useState} from 'react';
-import ReactDOM from 'react-dom';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {bindActionCreators} from 'redux';
+import {addList,deleteData} from '../Actions/ActionProvider'
+import {connect} from 'react-redux';
+import '../Pro.css'
+
+const mapStateToProps=(state)=>{
+return{
+    data:state.data,
+    count:state.count
+}
+}
+const mapDispatchToProps=(dispatch)=>{
+    return bindActionCreators({addList,deleteData},dispatch);
+
+}
 
 class MainComponent extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            x:'',
-            arr:[]
-        };
-    }
     
-   
+    data1="";
+    
+   addData=()=>{
+       this.props.addList(this.data1);
+   }
+   deleteTask=(val)=>{
+       this.props.deleteData(val);
+   }
     
     
 
@@ -22,31 +36,33 @@ class MainComponent extends Component{
        <div id="combo1">
        <div id="subcombo1">
        
-           <textarea id="tarea" onChange={(e)=>this.setState({x:e.target.value})}  placeholder="Enter your work list here" />
+           <textarea id="tarea" onChange={(event)=>{this.data1=event.target.value}}  placeholder="Enter your work list here" />
        
        </div>
        <div id="subcombo1">
        <div id='addbtn'>
       
-           <button id="btn1" onClick={()=>{
-               this.setState(y=>({arr:[...y.arr,this.state.x]}));
-                  
-            }} ><AddCircleIcon/></button>
+           <button id="btn1" onClick={this.addData} ><AddCircleIcon/></button>
         </div>
        </div>
        <div id="tasklist">
-       {console.log(this.state.arr)}
-       {this.state.arr.map((val)=>{
+       {console.log(this.props.count)}
+       <ul>
+       {this.props.data.map((val)=>{
                    return(
                     <>
-                    <div id="task">
-                    {val}<button id="delbtn" onClick={()=>this.setState({arr:this.state.arr.filter((item)=>item!=val)})}><DeleteIcon/></button>
+                    
+                    <div id="task" key={val.id}>
+                    {val.data}
                     </div>
+                  <div id='subtask'>
+                    <button onClick={()=>this.deleteTask(val.id)}><DeleteIcon/></button>
+                   </div>
                     <br/>
                     </>
                    );
-               })
-        }
+               })}
+        </ul>
         </div>
        </div>
       
@@ -54,4 +70,4 @@ class MainComponent extends Component{
         );
     }
 }
-export default MainComponent;
+export default connect(mapStateToProps,mapDispatchToProps)(MainComponent);

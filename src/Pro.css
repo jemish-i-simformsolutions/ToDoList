@@ -36,16 +36,25 @@
     width: 300px;
     min-height: 50px ;
     background-color: darkgrey;
+    border-radius: 3%;
     font-weight: bolder;
     color: cornsilk;
-    margin-left:0px ;
+    display: inline-block;
     
 }
-#delbtn{
+#dltbtn{
     margin-left: 305px;
     
 }
 #hoc{
     display: inline-block;
     margin-left: 10px;
+}
+#tasklist{
+    display: block;
+
+}
+#subtask{
+    display: inline-block;
+    margin-left: 5px;
 }

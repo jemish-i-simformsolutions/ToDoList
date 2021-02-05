@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "./Pro.css";
-import Task from "./TodoList/Task";
 
 
 
@@ -17,12 +16,7 @@ class App extends React.Component{
         
         return(
             <>
-            <div>
-            <div id="heading">To Do List</div>
-            <div>
-            <Task/>
-            </div>
-            </div>
+            
             </>
 
         );
